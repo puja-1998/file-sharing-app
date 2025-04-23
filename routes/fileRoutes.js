@@ -7,9 +7,16 @@ router.get("/", (req, res)=>{
     res.send("Hello Puja");
 });
 
-router.post("/upload", 
+//to upload the file
+router.post("/api/files/upload", 
     upload.single("Mahadev-pic"),
     fileController.fileUpload
 );
+
+//to share the file
+router.post("/api/files/share", fileController.fileShare);
+
+//to download the file
+router.get("/download/:id", fileController.fileDownload)
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const fileRouter = require("./routes/fileRoutes");
 require('dotenv').config();
 
@@ -7,7 +8,17 @@ const port = process.env.PORT || 3000;
 
 
 //app.use()
-app.use("/api/files",fileRouter);
+app.use("/",fileRouter);
+app.use(express.json());
+
+// conneting to mogoose db
+const mongoURL = process.env.MONGODB;
+
+mongoose
+    .connect(mongoURL)
+    .then(() => console.log("connected to the DB successfully"))
+    .catch((err) => console.log("error while connecting to the Database", err));
+
 
 app.listen(port, (err)=>{
     if(err){
