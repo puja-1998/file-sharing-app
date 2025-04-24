@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const upload = require("../middleware");
 const fileController = require("../controllers/controller");
-const upload = require("../middleware")
 
 router.get("/", (req, res)=>{
     res.send("Hello Puja");
@@ -9,7 +9,7 @@ router.get("/", (req, res)=>{
 
 //to upload the file
 router.post("/api/files/upload", 
-    upload.single("Mahadev-pic"),
+    upload.single("Lotus-pic"),
     fileController.fileUpload
 );
 

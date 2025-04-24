@@ -8,8 +8,10 @@ const port = process.env.PORT || 3000;
 
 
 //app.use()
+app.use(express.json()); // parses JSON body
+app.use(express.urlencoded({ extended: true })); // parses form data
+
 app.use("/",fileRouter);
-app.use(express.json());
 
 // conneting to mogoose db
 const mongoURL = process.env.MONGODB;
